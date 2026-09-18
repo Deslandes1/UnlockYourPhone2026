@@ -12,55 +12,65 @@ st.set_page_config(
 )
 
 # =========================================================
-# CUSTOM CSS — PROFESSIONAL BRANDING
+# CUSTOM CSS — LIGHT BLUE THEME WITH BRIGHT WHITE TEXT
 # =========================================================
 st.markdown("""
 <style>
-    /* -------- Global -------- */
-    .stApp {
-        background:
-            radial-gradient(900px 600px at 12% -10%, rgba(0,212,255,.08), transparent 62%),
-            radial-gradient(900px 600px at 92% 112%, rgba(255,45,149,.08), transparent 62%),
-            #05060e;
+    /* -------- Global — Light Blue Background -------- */
+    html, body, .stApp {
+        background: linear-gradient(160deg, #4A9EE0 0%, #3A87CC 45%, #2E7BC4 100%) !important;
+        background-attachment: fixed !important;
+        color: #ffffff !important;
+    }
+
+    /* Remove default Streamlit white containers */
+    .main, .block-container, section.main {
+        background: transparent !important;
+        color: #ffffff !important;
+    }
+
+    /* -------- All text bright white by default -------- */
+    h1, h2, h3, h4, h5, h6, p, span, div, label, li, ul, ol {
+        color: #ffffff;
     }
 
     /* -------- Hero Header -------- */
     .hero-header {
-        background: linear-gradient(180deg, rgba(20,25,50,.95), rgba(10,12,28,.95));
-        border: 3px solid #00d4ff;
+        background: linear-gradient(180deg, rgba(255,255,255,.18), rgba(255,255,255,.10));
+        border: 3px solid #ffffff;
         border-radius: 22px;
         padding: 28px 24px;
         text-align: center;
         margin-bottom: 24px;
-        box-shadow: 0 16px 50px rgba(0,0,0,.65), 0 0 60px rgba(0,212,255,.2);
+        box-shadow: 0 16px 50px rgba(0,0,0,.30), 0 0 60px rgba(255,255,255,.35);
+        backdrop-filter: blur(6px);
     }
     .hero-title {
         font-size: clamp(2rem, 5vw, 3.4rem);
         font-weight: 900;
         letter-spacing: 4px;
         line-height: 1.05;
-        background: linear-gradient(90deg, #00d4ff 0%, #a855f7 45%, #ff2d95 75%, #ffd93b 100%);
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
+        color: #ffffff !important;
+        text-shadow: 0 3px 18px rgba(0,0,0,.35), 0 0 40px rgba(255,255,255,.45);
         margin: 0;
     }
     .hero-subtitle {
         font-size: clamp(1rem, 2vw, 1.4rem);
         font-weight: 800;
         letter-spacing: 4px;
-        color: #00d4ff;
+        color: #ffffff !important;
         text-transform: uppercase;
         margin: 8px 0 6px;
-        text-shadow: 0 0 20px rgba(0,212,255,.6);
+        text-shadow: 0 2px 12px rgba(0,0,0,.30);
     }
     .hero-role {
         font-size: clamp(.72rem, 1.2vw, .88rem);
         font-weight: 700;
         letter-spacing: 3px;
-        color: #8892b8;
+        color: #ffffff !important;
         text-transform: uppercase;
         margin-bottom: 16px;
+        opacity: .92;
     }
     .hero-contact {
         display: flex;
@@ -76,65 +86,74 @@ st.markdown("""
         gap: 6px;
         padding: 8px 16px;
         border-radius: 999px;
-        background: rgba(255,255,255,.06);
-        border: 1px solid rgba(148,163,255,.22);
-        color: #dbe6ff;
+        background: rgba(255,255,255,.22);
+        border: 1px solid rgba(255,255,255,.55);
+        color: #ffffff !important;
+        backdrop-filter: blur(4px);
     }
     .hero-contact a {
-        color: #00d4ff;
+        color: #ffffff !important;
         text-decoration: none;
         font-weight: 900;
+        border-bottom: 1px dotted rgba(255,255,255,.7);
+    }
+    .hero-contact a:hover {
+        color: #FFF9C4 !important;
     }
 
     /* -------- Cards -------- */
     .feature-card {
-        background: linear-gradient(180deg, rgba(20,25,50,.9), rgba(10,12,28,.9));
-        border: 2px solid rgba(0,212,255,.35);
+        background: rgba(255,255,255,.16);
+        border: 2px solid rgba(255,255,255,.55);
         border-radius: 18px;
         padding: 20px;
         height: 100%;
-        box-shadow: 0 10px 30px rgba(0,0,0,.5);
+        box-shadow: 0 10px 30px rgba(0,0,0,.20);
         transition: all .25s ease;
+        backdrop-filter: blur(6px);
     }
     .feature-card:hover {
-        border-color: rgba(0,212,255,.7);
+        border-color: #ffffff;
         transform: translateY(-4px);
-        box-shadow: 0 14px 40px rgba(0,0,0,.6), 0 0 40px rgba(0,212,255,.2);
+        box-shadow: 0 14px 40px rgba(0,0,0,.30), 0 0 40px rgba(255,255,255,.45);
+        background: rgba(255,255,255,.24);
     }
     .feature-icon {
         font-size: 2.2rem;
         line-height: 1;
         margin-bottom: 10px;
-        filter: drop-shadow(0 0 12px rgba(0,212,255,.5));
+        filter: drop-shadow(0 0 12px rgba(255,255,255,.8));
     }
     .feature-title {
         font-size: 1.05rem;
         font-weight: 900;
         letter-spacing: 1px;
-        color: #fff;
+        color: #ffffff !important;
         margin-bottom: 6px;
     }
     .feature-desc {
         font-size: .85rem;
-        color: #b8c2e0;
+        color: #ffffff !important;
         line-height: 1.55;
         font-weight: 600;
+        opacity: .95;
     }
 
     /* -------- MonCash Block -------- */
     .moncash-box {
-        background: linear-gradient(135deg, rgba(255,217,59,.14), rgba(255,159,0,.14));
-        border: 3px solid #ffd93b;
+        background: linear-gradient(135deg, rgba(255,255,255,.24), rgba(255,255,255,.14));
+        border: 3px solid #ffffff;
         border-radius: 20px;
         padding: 22px 22px;
         text-align: center;
         margin: 16px 0 20px;
-        box-shadow: 0 0 40px rgba(255,217,59,.2);
+        box-shadow: 0 0 40px rgba(255,255,255,.35);
+        backdrop-filter: blur(6px);
     }
     .moncash-label {
         font-size: .78rem;
         letter-spacing: 3px;
-        color: #ffd93b;
+        color: #ffffff !important;
         text-transform: uppercase;
         font-weight: 900;
         margin-bottom: 8px;
@@ -143,23 +162,24 @@ st.markdown("""
         font-size: clamp(1.6rem, 4vw, 2.4rem);
         font-weight: 900;
         font-family: 'Courier New', monospace;
-        color: #ffd93b;
-        text-shadow: 0 0 24px rgba(255,217,59,.85);
+        color: #ffffff !important;
+        text-shadow: 0 3px 20px rgba(0,0,0,.35), 0 0 30px rgba(255,255,255,.65);
         letter-spacing: 3px;
         margin: 6px 0;
     }
     .moncash-amount {
         font-size: 1.1rem;
         font-weight: 900;
-        color: #fff;
+        color: #ffffff !important;
         letter-spacing: 1.5px;
     }
     .moncash-note {
         font-size: .78rem;
-        color: #ffe680;
+        color: #ffffff !important;
         font-weight: 700;
         margin-top: 8px;
         letter-spacing: .5px;
+        opacity: .95;
     }
 
     /* -------- Section Title -------- */
@@ -167,40 +187,138 @@ st.markdown("""
         font-size: clamp(1.3rem, 2.6vw, 1.8rem);
         font-weight: 900;
         letter-spacing: 2px;
-        background: linear-gradient(90deg, #00d4ff, #a855f7, #ff2d95);
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
+        color: #ffffff !important;
         margin: 20px 0 10px;
+        text-shadow: 0 2px 14px rgba(0,0,0,.30);
     }
 
-    /* -------- Result Box -------- */
+    /* -------- Result Boxes -------- */
     .result-good {
-        background: rgba(0,255,136,.1);
-        border: 2px solid #00ff88;
+        background: rgba(0,255,136,.22);
+        border: 2px solid #ffffff;
         border-radius: 14px;
         padding: 16px;
-        color: #7dffb8;
+        color: #ffffff !important;
         font-weight: 800;
         font-size: 1rem;
+        text-shadow: 0 1px 4px rgba(0,0,0,.30);
+        backdrop-filter: blur(4px);
     }
     .result-bad {
-        background: rgba(255,59,59,.1);
-        border: 2px solid #ff3b3b;
+        background: rgba(255,59,59,.22);
+        border: 2px solid #ffffff;
         border-radius: 14px;
         padding: 16px;
-        color: #ff8080;
+        color: #ffffff !important;
         font-weight: 800;
         font-size: 1rem;
+        text-shadow: 0 1px 4px rgba(0,0,0,.30);
+        backdrop-filter: blur(4px);
+    }
+
+    /* -------- Info intro box -------- */
+    .intro-box {
+        max-width: 900px;
+        margin: 0 auto 24px;
+        padding: 18px 22px;
+        border-radius: 16px;
+        background: rgba(255,255,255,.16);
+        border: 1px solid rgba(255,255,255,.45);
+        color: #ffffff !important;
+        font-size: 1rem;
+        line-height: 1.65;
+        font-weight: 600;
+        backdrop-filter: blur(6px);
+    }
+
+    /* -------- Trust & Safety -------- */
+    .safety-box {
+        background: rgba(255,255,255,.16);
+        border: 2px solid #ffffff;
+        border-radius: 16px;
+        padding: 20px 22px;
+        color: #ffffff !important;
+        line-height: 1.65;
+        font-weight: 600;
+        font-size: .92rem;
+        backdrop-filter: blur(6px);
+    }
+
+    /* -------- Streamlit Widgets (buttons, inputs) -------- */
+    .stButton > button {
+        background: #ffffff !important;
+        color: #2E7BC4 !important;
+        font-weight: 900 !important;
+        border-radius: 12px !important;
+        border: 2px solid #ffffff !important;
+        box-shadow: 0 4px 0 rgba(0,0,0,.20) !important;
+        transition: all .12s !important;
+    }
+    .stButton > button:hover {
+        background: #FFF9C4 !important;
+        color: #2E7BC4 !important;
+        transform: translateY(-1px);
+    }
+    .stButton > button:active {
+        transform: translateY(3px) !important;
+        box-shadow: 0 1px 0 rgba(0,0,0,.20) !important;
+    }
+
+    .stTextInput input,
+    .stTextArea textarea,
+    .stSelectbox select,
+    .stSelectbox div[data-baseweb="select"] {
+        background: rgba(255,255,255,.22) !important;
+        color: #ffffff !important;
+        border: 1.5px solid rgba(255,255,255,.55) !important;
+        border-radius: 10px !important;
+    }
+    .stTextInput input::placeholder,
+    .stTextArea textarea::placeholder {
+        color: rgba(255,255,255,.70) !important;
+    }
+    .stTextInput label,
+    .stTextArea label,
+    .stSelectbox label {
+        color: #ffffff !important;
+        font-weight: 800 !important;
+    }
+
+    /* Select box options */
+    .stSelectbox div[data-baseweb="select"] * {
+        color: #ffffff !important;
+    }
+
+    /* Code block */
+    .stCodeBlock, pre, code {
+        background: rgba(0,0,0,.28) !important;
+        color: #ffffff !important;
+        border-radius: 10px !important;
+        border: 1px solid rgba(255,255,255,.35) !important;
+    }
+    pre code, code span {
+        color: #ffffff !important;
+    }
+
+    /* Streamlit default text */
+    .stMarkdown, .stMarkdown * {
+        color: #ffffff !important;
+    }
+
+    /* Form submit buttons */
+    div[data-testid="stFormSubmitButton"] button {
+        background: #ffffff !important;
+        color: #2E7BC4 !important;
+        font-weight: 900 !important;
     }
 
     /* -------- Footer -------- */
     .app-footer {
         text-align: center;
         padding: 24px 16px 12px;
-        border-top: 1px solid rgba(148,163,255,.15);
+        border-top: 2px solid rgba(255,255,255,.35);
         margin-top: 30px;
-        color: #8892b8;
+        color: #ffffff !important;
         font-size: .78rem;
         font-weight: 700;
         letter-spacing: .6px;
@@ -208,23 +326,25 @@ st.markdown("""
     .app-footer .fname {
         font-size: 1rem;
         font-weight: 900;
-        color: #00d4ff;
+        color: #ffffff !important;
         letter-spacing: 2px;
         margin-bottom: 4px;
-        text-shadow: 0 0 20px rgba(0,212,255,.6);
+        text-shadow: 0 2px 14px rgba(0,0,0,.30);
     }
     .app-footer .frole {
         font-size: .7rem;
         letter-spacing: 2px;
         text-transform: uppercase;
-        color: #8892b8;
+        color: #ffffff !important;
         margin-bottom: 8px;
+        opacity: .92;
     }
     .app-footer a {
-        color: #7de7ff;
+        color: #ffffff !important;
         text-decoration: none;
         font-weight: 800;
         margin: 0 6px;
+        border-bottom: 1px dotted rgba(255,255,255,.7);
     }
 </style>
 """, unsafe_allow_html=True)
@@ -248,10 +368,8 @@ st.markdown("""
 # INTRODUCTION
 # =========================================================
 st.markdown("""
-<div style="max-width: 900px; margin: 0 auto 24px; padding: 18px 22px; border-radius: 16px;
-            background: rgba(15,20,42,.7); border: 1px solid rgba(148,163,255,.15);
-            color: #c8d2e0; font-size: 1rem; line-height: 1.65; font-weight: 600;">
-    Welcome to the <b style="color:#ffd93b;">Unlock Your Phone Application</b> — a professional,
+<div class="intro-box">
+    Welcome to the <b>Unlock Your Phone Application</b> — a professional,
     all-in-one assistant for legitimate phone diagnostics and carrier unlock requests.<br><br>
     This tool helps you:
     <ul style="margin: 8px 0 0 20px; padding: 0;">
@@ -261,7 +379,7 @@ st.markdown("""
         <li>✅ Get <b>direct 1-on-1 consultation</b> with Gesner for advanced troubleshooting</li>
     </ul>
     <br>
-    <b style="color:#ff8080;">⚠️ Important:</b> This app only supports <b>legitimate</b> phone
+    <b>⚠️ Important:</b> This app only supports <b>legitimate</b> phone
     operations. We do NOT bypass lock screens, FRP locks, iCloud activation locks, or any security feature.
     All services require proof of device ownership.
 </div>
@@ -338,7 +456,7 @@ imei_input = st.text_input(
 
 col_a, col_b = st.columns([1, 3])
 with col_a:
-    check_imei = st.button("✅ Validate IMEI", use_container_width=True, type="primary")
+    check_imei = st.button("✅ Validate IMEI", use_container_width=True)
 
 if check_imei:
     imei_clean = re.sub(r"\D", "", imei_input or "")
@@ -388,7 +506,7 @@ with col_y:
     models = sorted([k[1] for k in DEVICE_DB if k[0] == brand])
     model = st.selectbox("Model", models)
 
-if st.button("🔎 Look Up Device", use_container_width=False):
+if st.button("🔎 Look Up Device"):
     specs = DEVICE_DB.get((brand, model))
     if specs:
         st.markdown(f"""
@@ -406,7 +524,7 @@ if st.button("🔎 Look Up Device", use_container_width=False):
 st.markdown('<div class="section-title">🔓 Carrier Unlock Assistant</div>', unsafe_allow_html=True)
 
 st.markdown("""
-<div style="color:#b8c2e0; font-size:.92rem; font-weight:600; line-height:1.6; margin-bottom:14px;">
+<div style="color:#ffffff; font-size:.92rem; font-weight:600; line-height:1.6; margin-bottom:14px;">
     Fill in the details below. The app will generate a <b>professional unlock request email</b>
     that you can send directly to your carrier (Digicel, Natcom, AT&T, T-Mobile, etc.).
     This is the only legal path to remove a carrier SIM lock.
@@ -425,7 +543,7 @@ with st.form("unlock_form"):
     device_info = st.text_input("Device Model", placeholder="e.g. iPhone 12, Galaxy S21")
     reason = st.text_area("Reason for unlock request", placeholder="I am the original owner of this device and I want to use it with another carrier.", height=80)
 
-    submitted = st.form_submit_button("📧 Generate Unlock Request Email", use_container_width=True, type="primary")
+    submitted = st.form_submit_button("📧 Generate Unlock Request Email", use_container_width=True)
 
 if submitted:
     imei_clean = re.sub(r"\D", "", imei_unlock or "")
@@ -471,7 +589,7 @@ Sincerely,
 st.markdown('<div class="section-title">💬 Personal Consultation with Gesner</div>', unsafe_allow_html=True)
 
 st.markdown("""
-<div style="color:#b8c2e0; font-size:.95rem; font-weight:600; line-height:1.65; margin-bottom:16px;">
+<div style="color:#ffffff; font-size:.95rem; font-weight:600; line-height:1.65; margin-bottom:16px;">
     Need <b>direct 1-on-1 help</b> with a specific phone issue? Book a personal consultation with Gesner.
     He will guide you through the process over WhatsApp — step by step, in Kreyòl or English.<br><br>
     <b>Consultation includes:</b><br>
@@ -505,7 +623,7 @@ with st.form("consult_form"):
 
     consult_notes = st.text_area("Tell Gesner more about your issue", placeholder="Describe what you need help with…", height=90)
 
-    consult_submit = st.form_submit_button("📩 Submit Consultation Request", use_container_width=True, type="primary")
+    consult_submit = st.form_submit_button("📩 Submit Consultation Request", use_container_width=True)
 
 if consult_submit:
     if not client_name or not client_phone or not moncash_ref:
@@ -528,15 +646,13 @@ if consult_submit:
 st.markdown('<div class="section-title">🛡️ Trust & Safety</div>', unsafe_allow_html=True)
 
 st.markdown("""
-<div style="background: rgba(255,59,59,.08); border: 2px solid rgba(255,59,59,.45);
-            border-radius: 16px; padding: 20px 22px; color: #ffd0d0; line-height: 1.65;
-            font-weight: 600; font-size: .92rem;">
-    <b style="color:#ff8080; font-size:1.05rem;">⚠️ What this app does NOT do:</b><br><br>
+<div class="safety-box">
+    <b style="font-size:1.05rem;">⚠️ What this app does NOT do:</b><br><br>
     • ❌ Does NOT bypass lock screens (PIN, pattern, password)<br>
     • ❌ Does NOT bypass iCloud activation locks<br>
     • ❌ Does NOT bypass Google FRP (Factory Reset Protection)<br>
     • ❌ Does NOT bypass any manufacturer or owner security feature<br><br>
-    <b style="color:#7dffb8; font-size:1.05rem;">✅ What this app DOES do:</b><br><br>
+    <b style="font-size:1.05rem;">✅ What this app DOES do:</b><br><br>
     • ✅ Validate IMEI numbers (Luhn algorithm)<br>
     • ✅ Look up legitimate device specifications<br>
     • ✅ Generate carrier unlock request emails<br>
@@ -557,7 +673,7 @@ st.markdown("""
         📞 <a href="tel:+50947385663">(509) 4738-5663</a> &nbsp;·&nbsp;
         ✉️ <a href="mailto:deslandes78@gmail.com">deslandes78@gmail.com</a>
     </div>
-    <div style="margin-top: 12px; font-size: .68rem; color: #5a6480;">
+    <div style="margin-top: 12px; font-size: .68rem; opacity: .8;">
         © 2026 Unlock Your Phone Application · Built with Streamlit
     </div>
 </div>
