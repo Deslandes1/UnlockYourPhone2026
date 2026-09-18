@@ -12,7 +12,7 @@ st.set_page_config(
 )
 
 # =========================================================
-# CUSTOM CSS — LIGHT BLUE THEME WITH BRIGHT WHITE TEXT
+# CUSTOM CSS — LIGHT BLUE THEME + BRIGHT COLORED BOX TEXT
 # =========================================================
 st.markdown("""
 <style>
@@ -23,13 +23,11 @@ st.markdown("""
         color: #ffffff !important;
     }
 
-    /* Remove default Streamlit white containers */
     .main, .block-container, section.main {
         background: transparent !important;
         color: #ffffff !important;
     }
 
-    /* -------- All text bright white by default -------- */
     h1, h2, h3, h4, h5, h6, p, span, div, label, li, ul, ol {
         color: #ffffff;
     }
@@ -97,11 +95,9 @@ st.markdown("""
         font-weight: 900;
         border-bottom: 1px dotted rgba(255,255,255,.7);
     }
-    .hero-contact a:hover {
-        color: #FFF9C4 !important;
-    }
+    .hero-contact a:hover { color: #FFF9C4 !important; }
 
-    /* -------- Cards -------- */
+    /* -------- Feature Cards -------- */
     .feature-card {
         background: rgba(255,255,255,.16);
         border: 2px solid rgba(255,255,255,.55);
@@ -162,16 +158,17 @@ st.markdown("""
         font-size: clamp(1.6rem, 4vw, 2.4rem);
         font-weight: 900;
         font-family: 'Courier New', monospace;
-        color: #ffffff !important;
-        text-shadow: 0 3px 20px rgba(0,0,0,.35), 0 0 30px rgba(255,255,255,.65);
+        color: #FFEB3B !important;
+        text-shadow: 0 3px 20px rgba(0,0,0,.35), 0 0 30px rgba(255,235,59,.75);
         letter-spacing: 3px;
         margin: 6px 0;
     }
     .moncash-amount {
         font-size: 1.1rem;
         font-weight: 900;
-        color: #ffffff !important;
+        color: #00E676 !important;
         letter-spacing: 1.5px;
+        text-shadow: 0 2px 12px rgba(0,0,0,.30);
     }
     .moncash-note {
         font-size: .78rem;
@@ -187,9 +184,9 @@ st.markdown("""
         font-size: clamp(1.3rem, 2.6vw, 1.8rem);
         font-weight: 900;
         letter-spacing: 2px;
-        color: #ffffff !important;
+        color: #FFEB3B !important;
         margin: 20px 0 10px;
-        text-shadow: 0 2px 14px rgba(0,0,0,.30);
+        text-shadow: 0 2px 14px rgba(0,0,0,.35), 0 0 20px rgba(255,235,59,.4);
     }
 
     /* -------- Result Boxes -------- */
@@ -198,25 +195,27 @@ st.markdown("""
         border: 2px solid #ffffff;
         border-radius: 14px;
         padding: 16px;
-        color: #ffffff !important;
+        color: #00E676 !important;
         font-weight: 800;
         font-size: 1rem;
-        text-shadow: 0 1px 4px rgba(0,0,0,.30);
+        text-shadow: 0 1px 4px rgba(0,0,0,.35);
         backdrop-filter: blur(4px);
     }
+    .result-good b { color: #ffffff !important; }
     .result-bad {
         background: rgba(255,59,59,.22);
         border: 2px solid #ffffff;
         border-radius: 14px;
         padding: 16px;
-        color: #ffffff !important;
+        color: #FF8A80 !important;
         font-weight: 800;
         font-size: 1rem;
-        text-shadow: 0 1px 4px rgba(0,0,0,.30);
+        text-shadow: 0 1px 4px rgba(0,0,0,.35);
         backdrop-filter: blur(4px);
     }
+    .result-bad b { color: #ffffff !important; }
 
-    /* -------- Info intro box -------- */
+    /* -------- Intro box -------- */
     .intro-box {
         max-width: 900px;
         margin: 0 auto 24px;
@@ -244,7 +243,134 @@ st.markdown("""
         backdrop-filter: blur(6px);
     }
 
-    /* -------- Streamlit Widgets (buttons, inputs) -------- */
+    /* ===================================================
+       INPUT BOXES — BRIGHT COLORED TEXT
+       =================================================== */
+
+    /* ---------- TEXT INPUTS ---------- */
+    .stTextInput input {
+        background: rgba(255,255,255,.22) !important;
+        color: #FFEB3B !important;
+        border: 2px solid rgba(255,255,255,.55) !important;
+        border-radius: 10px !important;
+        font-weight: 900 !important;
+        font-size: 1rem !important;
+        letter-spacing: .5px !important;
+        text-shadow: 0 1px 3px rgba(0,0,0,.35) !important;
+        transition: all .2s ease !important;
+    }
+    .stTextInput input::placeholder {
+        color: rgba(255,255,255,.55) !important;
+        font-weight: 700 !important;
+        font-style: italic !important;
+    }
+    /* FOCUSED input — brighter, glowing */
+    .stTextInput input:focus {
+        background: rgba(255,255,255,.32) !important;
+        color: #00E5FF !important;
+        border: 2px solid #00E5FF !important;
+        box-shadow: 0 0 0 3px rgba(0,229,255,.35), 0 0 24px rgba(0,229,255,.55) !important;
+        text-shadow: 0 0 12px rgba(0,229,255,.7) !important;
+    }
+
+    /* ---------- TEXT AREAS ---------- */
+    .stTextArea textarea {
+        background: rgba(255,255,255,.22) !important;
+        color: #FFEB3B !important;
+        border: 2px solid rgba(255,255,255,.55) !important;
+        border-radius: 10px !important;
+        font-weight: 800 !important;
+        font-size: .96rem !important;
+        letter-spacing: .3px !important;
+        text-shadow: 0 1px 3px rgba(0,0,0,.35) !important;
+        transition: all .2s ease !important;
+    }
+    .stTextArea textarea::placeholder {
+        color: rgba(255,255,255,.55) !important;
+        font-weight: 700 !important;
+        font-style: italic !important;
+    }
+    .stTextArea textarea:focus {
+        background: rgba(255,255,255,.32) !important;
+        color: #00E5FF !important;
+        border: 2px solid #00E5FF !important;
+        box-shadow: 0 0 0 3px rgba(0,229,255,.35), 0 0 24px rgba(0,229,255,.55) !important;
+        text-shadow: 0 0 12px rgba(0,229,255,.7) !important;
+    }
+
+    /* ---------- SELECT BOX (dropdown container) ---------- */
+    .stSelectbox div[data-baseweb="select"] > div {
+        background: rgba(255,255,255,.22) !important;
+        border: 2px solid rgba(255,255,255,.55) !important;
+        border-radius: 10px !important;
+        transition: all .2s ease !important;
+    }
+
+    /* The selected value shown inside the closed box */
+    .stSelectbox div[data-baseweb="select"] div[data-testid="stSelectbox"] div,
+    .stSelectbox div[data-baseweb="select"] span,
+    .stSelectbox div[data-baseweb="select"] input,
+    .stSelectbox div[data-baseweb="select"] [class*="ValueContainer"],
+    .stSelectbox div[data-baseweb="select"] [class*="singleValue"] {
+        color: #FFEB3B !important;
+        font-weight: 900 !important;
+        letter-spacing: .5px !important;
+        text-shadow: 0 1px 3px rgba(0,0,0,.35) !important;
+    }
+
+    /* Focus / selected state — bright cyan glow */
+    .stSelectbox div[data-baseweb="select"]:focus-within > div {
+        background: rgba(255,255,255,.32) !important;
+        border: 2px solid #00E5FF !important;
+        box-shadow: 0 0 0 3px rgba(0,229,255,.35), 0 0 24px rgba(0,229,255,.55) !important;
+    }
+    .stSelectbox div[data-baseweb="select"]:focus-within span,
+    .stSelectbox div[data-baseweb="select"]:focus-within [class*="singleValue"] {
+        color: #00E5FF !important;
+        text-shadow: 0 0 12px rgba(0,229,255,.8) !important;
+    }
+
+    /* The dropdown arrow icon */
+    .stSelectbox div[data-baseweb="select"] svg {
+        fill: #ffffff !important;
+        color: #ffffff !important;
+    }
+
+    /* ---------- DROPDOWN MENU (popup list) ---------- */
+    div[data-baseweb="popover"] ul,
+    div[data-baseweb="popover"] li,
+    div[role="listbox"] {
+        background: #2E7BC4 !important;
+        color: #ffffff !important;
+        border-radius: 10px !important;
+    }
+    div[role="option"] {
+        color: #FFEB3B !important;
+        font-weight: 800 !important;
+        background: #2E7BC4 !important;
+    }
+    div[role="option"]:hover {
+        background: rgba(0,229,255,.35) !important;
+        color: #00E5FF !important;
+    }
+    /* Highlighted / currently-selected option */
+    div[role="option"][aria-selected="true"] {
+        background: rgba(255,235,59,.30) !important;
+        color: #FFEB3B !important;
+        font-weight: 900 !important;
+    }
+
+    /* ---------- LABELS ---------- */
+    .stTextInput label,
+    .stTextArea label,
+    .stSelectbox label {
+        color: #ffffff !important;
+        font-weight: 800 !important;
+        letter-spacing: .5px !important;
+        text-shadow: 0 1px 3px rgba(0,0,0,.30) !important;
+    }
+
+    /* ---------- BUTTONS ---------- */
     .stButton > button {
         background: #ffffff !important;
         color: #2E7BC4 !important;
@@ -253,10 +379,11 @@ st.markdown("""
         border: 2px solid #ffffff !important;
         box-shadow: 0 4px 0 rgba(0,0,0,.20) !important;
         transition: all .12s !important;
+        letter-spacing: 1px !important;
     }
     .stButton > button:hover {
-        background: #FFF9C4 !important;
-        color: #2E7BC4 !important;
+        background: #FFEB3B !important;
+        color: #1A3A5C !important;
         transform: translateY(-1px);
     }
     .stButton > button:active {
@@ -264,55 +391,42 @@ st.markdown("""
         box-shadow: 0 1px 0 rgba(0,0,0,.20) !important;
     }
 
-    .stTextInput input,
-    .stTextArea textarea,
-    .stSelectbox select,
-    .stSelectbox div[data-baseweb="select"] {
-        background: rgba(255,255,255,.22) !important;
-        color: #ffffff !important;
-        border: 1.5px solid rgba(255,255,255,.55) !important;
-        border-radius: 10px !important;
+    /* Form submit buttons */
+    div[data-testid="stFormSubmitButton"] button {
+        background: #FFEB3B !important;
+        color: #1A3A5C !important;
+        font-weight: 900 !important;
+        border: 2px solid #ffffff !important;
     }
-    .stTextInput input::placeholder,
-    .stTextArea textarea::placeholder {
-        color: rgba(255,255,255,.70) !important;
-    }
-    .stTextInput label,
-    .stTextArea label,
-    .stSelectbox label {
-        color: #ffffff !important;
-        font-weight: 800 !important;
+    div[data-testid="stFormSubmitButton"] button:hover {
+        background: #00E5FF !important;
+        color: #1A3A5C !important;
     }
 
-    /* Select box options */
-    .stSelectbox div[data-baseweb="select"] * {
-        color: #ffffff !important;
-    }
-
-    /* Code block */
+    /* ---------- CODE BLOCK ---------- */
     .stCodeBlock, pre, code {
-        background: rgba(0,0,0,.28) !important;
-        color: #ffffff !important;
+        background: rgba(0,0,0,.32) !important;
+        color: #00E5FF !important;
         border-radius: 10px !important;
         border: 1px solid rgba(255,255,255,.35) !important;
     }
     pre code, code span {
-        color: #ffffff !important;
+        color: #00E5FF !important;
+        font-weight: 700 !important;
     }
 
-    /* Streamlit default text */
+    /* Streamlit default markdown text */
     .stMarkdown, .stMarkdown * {
         color: #ffffff !important;
     }
 
-    /* Form submit buttons */
-    div[data-testid="stFormSubmitButton"] button {
-        background: #ffffff !important;
-        color: #2E7BC4 !important;
-        font-weight: 900 !important;
+    /* Help tooltips */
+    .stTooltipIcon svg {
+        fill: #FFEB3B !important;
+        color: #FFEB3B !important;
     }
 
-    /* -------- Footer -------- */
+    /* ---------- FOOTER ---------- */
     .app-footer {
         text-align: center;
         padding: 24px 16px 12px;
@@ -326,10 +440,10 @@ st.markdown("""
     .app-footer .fname {
         font-size: 1rem;
         font-weight: 900;
-        color: #ffffff !important;
+        color: #FFEB3B !important;
         letter-spacing: 2px;
         margin-bottom: 4px;
-        text-shadow: 0 2px 14px rgba(0,0,0,.30);
+        text-shadow: 0 2px 14px rgba(0,0,0,.35), 0 0 22px rgba(255,235,59,.5);
     }
     .app-footer .frole {
         font-size: .7rem;
@@ -340,11 +454,11 @@ st.markdown("""
         opacity: .92;
     }
     .app-footer a {
-        color: #ffffff !important;
+        color: #00E5FF !important;
         text-decoration: none;
         font-weight: 800;
         margin: 0 6px;
-        border-bottom: 1px dotted rgba(255,255,255,.7);
+        border-bottom: 1px dotted rgba(0,229,255,.7);
     }
 </style>
 """, unsafe_allow_html=True)
